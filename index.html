@@ -1,0 +1,190 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="it"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>Il PNRR</title>
+<meta name="description" content="PNRR">
+<meta name="author" content="PNRR">
+<link rel="canonical" href="https://www.piersoft.it" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="PNRR" />
+<meta property="og:url" content="https://www.piersoft.it" />
+<meta property="og:image" content="https://www.piersoft.it/wp-content/uploads/2014/01/Schermata-2014-01-21-alle-23.37.21.ico">
+<meta property="og:site_name" content="Piersoft" />
+<meta property="og:description" content="esplorare PNRR"/>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- CSS concatenated and minified via ant build script-->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="https://explorer.fbk.eu/css/normalize.css">
+
+<!-- end CSS-->
+<script src="js/libs/modernizr-2.0.6.min.js"></script>
+<style>
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.btn.active, .btn:active {
+
+      background-color: #619fdc ;
+      color: #fff;
+}
+
+h2 {
+  font-size: 16px;
+  color: blue;
+}
+h1 {
+    font-size: 48px;
+    font-family: Montserrat,sans-serif;
+    text-align: center;
+    font-weight: 700;
+      color: #0559A2;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+
+}
+#vis {
+  clear: both;
+  margin-bottom: 0px;
+}
+
+body {
+font-family: 'Titillium Web', sans-serif;
+font-size:13px;
+    color: #0559A2;
+padding: 0px;
+text-align: center;
+}
+@media only screen and (max-width: 600px) {
+body {
+    font-size:13px;
+
+}
+h1 {font-size: 28px;}
+#vis {
+  width: 400px;
+  clear: both;
+  margin-top: 0px;
+}
+.year{
+  font-size: 14px;
+}
+.btn {
+font-size: 10px;
+      background-color: #619fdc ;
+      color: #000;
+}
+
+}
+.tooltip {
+  background:#fff;
+  border:3px solid #0559FF;
+  pointer-events:none;
+  position:absolute;
+  max-width:250px;
+  box-shadow:6px 7px 0 #0559FF;
+  z-index:1000;
+  color: black;
+  opacity: .9;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+.svg-container {
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 60%; /* aspect ratio */
+    overflow: hidden;
+    position: relative; top: 0; right: 0; bottom: 0; left: 0; -webkit-tap-highlight-color: transparent;
+
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container" class="container" style="margin-left: 0px; width: 100%;">
+  <header>
+  </br>
+  <h1>PNRR</h1>
+  </header>
+  <p>Fonte <a href="https://raw.githubusercontent.com/sapomnia/Piano-nazionale-di-ripartenza-e-resilienza/main/PNRR.csv" target="_blank">Riccardo Saporiti</a> Lic CC0</p>
+  <p>Elaborazione grafica @piersoft . Valori espressi in Milioni di Euro</p>
+  <div id="main" role="main">
+  <div id="view_selection" class="">
+      <a href="#" id="all" class="btn active">TUTTI LE COMPONENTI</a>
+      <a href="#" id="year" class="btn">PER MISSIONE</a>
+    </div>
+    <div id="vis" style="margin-left: 100px;"></div>
+  </div>
+
+</div> <!--! end of #container -->
+
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+<script defer src="js/plugins.js"></script>
+<script defer src="js/script.js"></script>
+<script src="js/CustomTooltip.js"></script>
+<script src="js/libs/coffee-script.js"></script>
+<script src="js/libs/d3.min.js"></script>
+<script src="js/libs/d3.csv.min.js"></script>
+<script src="js/libs/d3.layout.min.js"></script>
+<script src="js/libs/d3.geom.min.js"></script>
+<script type="text/coffeescript" src="coffee/pnrr3.coffee"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(document).ready(function() {
+        $('#view_selection a').click(function() {
+          var view_type = $(this).attr('id');
+          $('#view_selection a').removeClass('active');
+          $(this).toggleClass('active');
+          toggle_view(view_type);
+          return false;
+        });
+      });
+  });
+</script>
+
+
+
+
+<!--[if lt IE 7 ]>
+  <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+  <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+
+</body>
+</html>

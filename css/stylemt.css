@@ -1,0 +1,56 @@
+a, a:visited, a:active {
+  color: #444;
+}
+
+#vis {
+  width: 1200px;
+  height: 600px;
+  clear: both;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+}
+
+#view_selection {
+  margin-top: 10px;
+}
+
+.years {
+  font-size: 16px;
+}
+
+.tooltip {
+  background:#fff;
+  border:3px solid #0559A2;
+  pointer-events:none;
+  position:absolute;
+  max-width:250px;
+  box-shadow:6px 7px 0 #0559A2;
+  font-size:1.4rem;
+  font-weight:400;
+  z-index:1000;
+  color: black;
+  opacity: .9;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  pointer-events: none;
+
+
+}
+.tooltip .title {
+	font-size: 13px;
+}
+
+.tooltip .name {
+  font-weight:bold;
+}
+.tooltip h3{margin:0 0 .5rem;font-size:1.8rem;font-weight:400;letter-spacing:.01rem}
+.tooltip p{margin:0;line-height:2.2rem;font-weight:600}
+.tooltip strong{font-weight:400}.contains-hirings-charts{color:#0079D3;margin-top:33px;text-align:center}
